@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCFAEE"
+    android:padding="16dp">
+
+    <!-- Logo di tengah -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/aspect"/>
+
+    <!-- Kolom Nama -->
+    <EditText
+        android:id="@+id/namaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama"
+        android:inputType="textPersonName"
+        android:layout_marginTop="16dp" />
+
+    <!-- Kolom Nomor HP -->
+    <EditText
+        android:id="@+id/nomorHpEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nomor HP"
+        android:inputType="phone"
+        android:layout_marginTop="8dp" />
+
+    <!-- Ringkasan Pembayaran -->
+    <TextView
+        android:id="@+id/totalPaymentTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: Rp 0"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+    <!-- Metode Pembayaran -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Metode Pembayaran:"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp" />
+
+    <RadioGroup
+        android:id="@+id/metodePembayaranRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/cashRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cash" />
+
+        <RadioButton
+            android:id="@+id/transferBankRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transfer Bank" />
+
+        <RadioButton
+            android:id="@+id/qrisRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qris" />
+    </RadioGroup>
+
+    <!-- Tombol Pesan -->
+    <Button
+        android:id="@+id/pesanButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pesan"
+        android:layout_gravity="center"
+        android:backgroundTint="#DA8359"
+        android:layout_marginTop="20dp"/>
+
+
+</LinearLayout>
