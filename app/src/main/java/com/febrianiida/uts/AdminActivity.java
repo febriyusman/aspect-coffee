@@ -92,17 +92,12 @@ public class AdminActivity extends AppCompatActivity {
 
 
     private void openWeatherDetailFragment(WeatherResponse weather) {
-        CuacaFragment fragment = new CuacaFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("temp", String.valueOf(weather.current.tempC));
-        bundle.putString("description", weather.current.condition.text);
-        fragment.setArguments(bundle);
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit();
+        Intent intent = new Intent(AdminActivity.this, CuacaActivity.class);
+        intent.putExtra("temp", String.valueOf(weather.current.tempC));
+        intent.putExtra("description", weather.current.condition.text);
+        startActivity(intent);
     }
+
     private List<Product> getProductsFromDatabase() {
         List<Product> productList = new ArrayList<>();
         Cursor cursor = databaseHelper.getAllItems();

@@ -1,18 +1,12 @@
 package com.febrianiida.uts;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 
@@ -20,41 +14,39 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-public class CuacaFragment extends Fragment {
+public class CuacaActivity extends AppCompatActivity {
     private TextView tempTextView, descriptionTextView;
     private SearchView searchView;
     private TextView humidityTextView, windSpeedTextView, lastUpdatedTextView;
     private ImageView weatherDetailImage;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_cuaca, container, false);
-    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cuaca); // Layout baru untuk Activity ini
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        // Inisialisasi elemen UI
+        tempTextView = findViewById(R.id.tempTextView);
+        descriptionTextView = findViewById(R.id.descriptionTextView);
+        searchView = findViewById(R.id.searchView);
+        humidityTextView = findViewById(R.id.humidityTextView);
+        windSpeedTextView = findViewById(R.id.windSpeedTextView);
+        weatherDetailImage = findViewById(R.id.weatherDetailImage);
+        lastUpdatedTextView = findViewById(R.id.lastUpdatedTextView);
 
-        tempTextView = view.findViewById(R.id.tempTextView);
-        descriptionTextView = view.findViewById(R.id.descriptionTextView);
-        searchView = view.findViewById(R.id.searchView);
+        // Tangkap data dari Intent
+        if (getIntent() != null) {
+            String temp = getIntent().getStringExtra("temp");
+            String description = getIntent().getStringExtra("description");
 
-        humidityTextView = view.findViewById(R.id.humidityTextView);
-        windSpeedTextView = view.findViewById(R.id.windSpeedTextView);
-        weatherDetailImage = view.findViewById(R.id.weatherDetailImage);
-        lastUpdatedTextView = view.findViewById(R.id.lastUpdatedTextView);
-
-        if (getArguments() != null) {
-            tempTextView.setText(String.format("Temperature: %s°C", getArguments().getString("temp", "N/A")));
-            descriptionTextView.setText(String.format("Condition: %s", getArguments().getString("description", "N/A")));
+            tempTextView.setText(String.format("Temperature: %s°C", temp != null ? temp : "--"));
+            descriptionTextView.setText(String.format("Condition: %s", description != null ? description : "--"));
         }
 
+        // Tambahkan listener untuk SearchView
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // Handle search query here
                 fetchWeatherData(query);
                 return false;
             }
@@ -82,19 +74,18 @@ public class CuacaFragment extends Fragment {
                     windSpeedTextView.setText(String.format("%.1f kph", weather.current.windKph));
                     lastUpdatedTextView.setText(weather.current.lastUpdated);
 
-                    Glide.with(requireContext())
+                    Glide.with(CuacaActivity.this)
                             .load("https:" + weather.current.condition.icon)
                             .into(weatherDetailImage);
                 } else {
-                    Toast.makeText(getContext(), "City not found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CuacaActivity.this, "City not found", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<WeatherResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CuacaActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 }

@@ -14,11 +14,6 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        RecyclerView recyclerView = findViewById(R.id.productRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-
 //        List<Product> productList = new ArrayList<>();
 //        productList.add(new Product("Americano", "Kopi hitam yang khas", 30000, R.drawable.americano));
 //        productList.add(new Product("Coffee Latte", "Espresso dengan susu panas", 35000, R.drawable.coffeelatte));

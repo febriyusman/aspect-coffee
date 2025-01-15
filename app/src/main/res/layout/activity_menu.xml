@@ -7,37 +7,37 @@
     android:background="#FCFAEE"
     tools:context=".MenuActivity">
 
-    <!-- Judul -->
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menu Produk"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="16dp" />
+<!--    &lt;!&ndash; Judul &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/titleTextView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Menu Produk"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:paddingBottom="16dp" />-->
 
-    <!-- RecyclerView untuk daftar produk -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/productRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_below="@id/titleTextView"
-        android:layout_above="@id/addItemButton"
-        android:layout_marginBottom="16dp" />
+<!--    &lt;!&ndash; RecyclerView untuk daftar produk &ndash;&gt;-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/productRecyclerView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_below="@id/titleTextView"-->
+<!--        android:layout_above="@id/addItemButton"-->
+<!--        android:layout_marginBottom="16dp" />-->
 
-    <!-- Tombol untuk menambahkan produk -->
-    <Button
-        android:id="@+id/addItemButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tambah Produk"
-        android:textSize="14sp"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:textColor="#FFFFFF"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp" />
+<!--    &lt;!&ndash; Tombol untuk menambahkan produk &ndash;&gt;-->
+<!--    <Button-->
+<!--        android:id="@+id/addItemButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Tambah Produk"-->
+<!--        android:textSize="14sp"-->
+<!--        android:backgroundTint="@android:color/holo_blue_light"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:layout_marginEnd="16dp" />-->
 </RelativeLayout>
